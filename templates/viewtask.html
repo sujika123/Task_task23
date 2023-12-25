@@ -1,0 +1,35 @@
+{% extends 'userhome.html' %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
+{% block content %}
+
+
+<div class="card" style="color:black">
+  <div class="card-body">
+    <h3>VIEW TASK</h3>
+  <table class="table">
+    <tr>
+      <th>SI.NO</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>DueDate</th>
+      <th>Category</th>
+      <th>Edit</th>
+      <th>Edit</th>
+    </tr>
+    {% for i in data %}
+    <tr>
+      <td>{{forloop.counter}}</td>
+      <td>{{i.Title}}</td>
+      <td>{{i.Description}}</td>
+      <td>{{i.DueDate}}</td>
+      <td>{{i.Category}}</td>
+      <td><a href="{% url 'taskupdate' i.id %}"><button type="submit" class="btn btn-primary">Update</button></a></td>
+      <td><a href="{% url 'taskdelete' i.id %}"><button type="submit" class="btn btn-danger">Delete</button></a></td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+</div>
+
+{% endblock %}
